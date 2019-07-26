@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import styled from '@emotion/styled';
 
+import FlatSharpSelector from "./FlatSharpSelector";
+import KeySelector from "./KeySelector";
 import { DataHeader } from "../App.js";
 
 const TitleContainer = styled.div`
@@ -13,6 +15,7 @@ const AppHeader = styled.div`
 	width: 100%;
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 `
 const Title = styled.input`
 	color: #ffffff;
@@ -37,6 +40,10 @@ const Subtitle = styled.input`
 	}
 `
 
+const FlatSharpContainer = styled.div`
+	display: flex;
+`
+
 const Header = props => {
 	const { title, subtitle, setTitle, setSubtitle } = useContext(DataHeader);
 	console.log(title);
@@ -46,6 +53,10 @@ const Header = props => {
 				<Title value={title} onChange={e => setTitle(e.target.value)}/><br/>
 				<Subtitle value={subtitle} onChange={e => setSubtitle(e.target.value)}/>
 			</TitleContainer>
+			<FlatSharpContainer>
+				<FlatSharpSelector/>
+				<KeySelector />
+			</FlatSharpContainer>
 		</AppHeader>
 	)
 }
