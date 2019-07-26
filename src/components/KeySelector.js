@@ -4,10 +4,8 @@ import styled from '@emotion/styled';
 import { DataHeader } from "../App.js";
 
 const KeySelector = () => {
-	const {keys, currentKey, setCurrentKey, sharpsOrFlats, currentKeyOptions, setCurrentKeyOptions,} = useContext(DataHeader);
-	console.log("Sharp or flat?", sharpsOrFlats);
+	const { keys, currentKey, setCurrentKey } = useContext(DataHeader);
 	const setter = set => e => {
-		console.log("e", e)
 		const value = e.target.value;
 		set(value);
 	}

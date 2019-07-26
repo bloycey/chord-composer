@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import styled from '@emotion/styled';
 
-import FlatSharpSelector from "./FlatSharpSelector";
+import AccidentalSelector from "./AccidentalSelector";
 import KeySelector from "./KeySelector";
 import { DataHeader } from "../App.js";
 
@@ -55,7 +55,7 @@ const Header = props => {
 			</TitleContainer>
 			<FlatSharpContainer>
 				<KeySelector />
-				<FlatSharpSelector/>
+				<AccidentalSelector/>
 			</FlatSharpContainer>
 		</AppHeader>
 	)
