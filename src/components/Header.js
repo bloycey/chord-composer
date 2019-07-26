@@ -54,8 +54,8 @@ const Header = props => {
 				<Subtitle value={subtitle} onChange={e => setSubtitle(e.target.value)}/>
 			</TitleContainer>
 			<FlatSharpContainer>
-				<FlatSharpSelector/>
 				<KeySelector />
+				<FlatSharpSelector/>
 			</FlatSharpContainer>
 		</AppHeader>
 	)

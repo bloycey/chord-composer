@@ -21,22 +21,22 @@ const SharpFlatText = styled.span`
 `
 
 const FlatSharpSelector = () => {
-	const { sharpsOrFlats, setSharpsOrFlats, setCurrentKey, keys } = useContext(DataHeader);
-	const setter = (setSharpsFlats, setKey) => e => {
+	const { accidental, setAccidental, setCurrentKey, keys } = useContext(DataHeader);
+	const setter = setAccidental => e => {
 		const value = e.target.value;
-		setSharpsFlats(value);
+		setAccidental(value);
 	}
 	return (
 		<SharpFlatWrapper>
 			<div>
-				<SharpFlatTitle>Display Sharp or Flat Keys?</SharpFlatTitle>
-			</div>
 			<div>
-				<div>
-					<input type="radio" name="flatsOrSharps" value="flats" checked={sharpsOrFlats === "flats"} onChange={setter(setSharpsOrFlats, setCurrentKey)}/><SharpFlatText>Flats</SharpFlatText>
+					<input type="radio" name="flatsOrSharps" value="natural" onChange={setter(setAccidental, setCurrentKey)}/><SharpFlatText>Natural</SharpFlatText>
 				</div>
 				<div>
-					<input type="radio" name="flatsOrSharps" value="sharps" checked={sharpsOrFlats === "sharps"} onChange={setter(setSharpsOrFlats, setCurrentKey)}/><SharpFlatText>Sharps</SharpFlatText>
+					<input type="radio" name="flatsOrSharps" value="sharp" onChange={setter(setAccidental, setCurrentKey)}/><SharpFlatText>Sharp</SharpFlatText>
+				</div>
+				<div>
+				<input type="radio" name="flatsOrSharps" value="flat" onChange={setter(setAccidental, setCurrentKey)}/><SharpFlatText>Flat</SharpFlatText>
 				</div>
 			</div>
 		</SharpFlatWrapper>
