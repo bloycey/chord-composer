@@ -18,15 +18,14 @@ const AccidentalText = styled.span`
 
 const AccidentalSelector = () => {
 	const { accidental, setAccidental, currentKey, setCurrentKey } = useContext(DataHeader);
-	const fullKey = `${currentKey}_${accidental}`
 
 	const setter = setAccidental => e => {
 		const value = e.target.value;
 		setAccidental(value);
 	}
 
-	const createSharpNote = note => `${note}_sharp`;
-	const createFlatNote = note => `${note}_flat`;
+	const createSharpNote = note => `${note}#`;
+	const createFlatNote = note => `${note}b`;
 	const noteExists = (note, allowedNotes) => allowedNotes.includes(note);
 
 	return (
@@ -37,12 +36,12 @@ const AccidentalSelector = () => {
 				</div>
 				{noteExists(createSharpNote(currentKey), notes) &&
 					<div>
-						<input type="radio" name="flatsOrSharps" value="sharp" checked={accidental === "sharp"} onChange={setter(setAccidental, setCurrentKey)} /><AccidentalText>Sharp</AccidentalText>
+						<input type="radio" name="flatsOrSharps" value="#" checked={accidental === "#"} onChange={setter(setAccidental, setCurrentKey)} /><AccidentalText>Sharp</AccidentalText>
 					</div>
 				}
 				{noteExists(createFlatNote(currentKey), notes) &&
 					<div>
-						<input type="radio" name="flatsOrSharps" value="flat" checked={accidental === "flat"} onChange={setter(setAccidental, setCurrentKey)} /><AccidentalText>Flat</AccidentalText>
+						<input type="radio" name="flatsOrSharps" value="b" checked={accidental === "b"} onChange={setter(setAccidental, setCurrentKey)} /><AccidentalText>Flat</AccidentalText>
 					</div>
 				}
 			</div>

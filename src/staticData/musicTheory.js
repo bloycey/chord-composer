@@ -1,9 +1,10 @@
 export const keys = ["C", "D", "E", "F", "G", "A", "B"];
-export const notes = ["C_natural", "C_sharp", "D_flat", "D_natural", "D_sharp", "E_flat", "E_natural", "F_natural", "F_sharp", "G_flat", "G_natural", "G_sharp", "A_flat", "A_natural", "A_sharp", "B_flat", "B_natural"]
+export const notes = ["C", "C#", "Db", "D", "D#", "Eb", "E", "F", "F#", "Gb", "G", "G#", "Ab", "A", "A#", "Bb", "B"]
+export const chromaticScale = ["C4", "C#4", "D4", "D#4", "E4", "F4", "F#4", "G4", "G#4", "A4", "A#4", "B4", "C5", "C#5", "D5", "D#5", "E5", "F5", "F#5", "G5", "G#5", "A5", "A#5", "B5", "C6"]
 export const chordTypes = {
 	major: {
 		intervals: ["maj3", "perf5"],
-		shortName: "M",
+		shortName: "",
 		fullName: "Major"
 	},
 	minor: {
@@ -66,4 +67,18 @@ export const chordTypes = {
 		shortName: "m(M7)",
 		fullName: "Minor-Major Seventh"
 	}
+}
+
+// intervals as semitones
+export const intervalReference = {
+	min3: 3,
+	maj3: 4,
+	perf4: 5,
+	dim5: 6,
+	perf5: 7,
+	aug5: 8,
+	maj6: 9,
+	dim7: 9,
+	min7: 10,
+	maj7: 11
 }

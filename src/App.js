@@ -4,8 +4,6 @@ import ChordExplorer from "./components/ChordExplorer";
 import Header from "./components/Header";
 import Playback from "./components/Playback";
 
-import { keys, chordTypes } from "./staticData/musicTheory";
-
 export const DataHeader = React.createContext();
 export const DataChordExplorer = React.createContext();
 
@@ -17,7 +15,7 @@ function App() {
 	const [currentKey, setCurrentKey] = useState("C");
 	const [accidental, setAccidental] = useState("natural");
 
-	const headerData = { title, setTitle, subtitle, setSubtitle, currentKey, setCurrentKey, accidental, setAccidental, keys };
+	const headerData = { title, setTitle, subtitle, setSubtitle, currentKey, setCurrentKey, accidental, setAccidental };
 	const chordExplorerData = { currentKey, accidental }
 
 
