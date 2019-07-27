@@ -1,4 +1,5 @@
-export const keys = ["C", "D", "E", "F", "G", "A", "B"]
+export const keys = ["C", "D", "E", "F", "G", "A", "B"];
+export const notes = ["C_natural", "C_sharp", "D_flat", "D_natural", "D_sharp", "E_flat", "E_natural", "F_natural", "F_sharp", "G_flat", "G_natural", "G_sharp", "A_flat", "A_natural", "A_sharp", "B_flat", "B_natural"]
 export const chordTypes = {
 	major: {
 		intervals: ["maj3", "perf5"]
