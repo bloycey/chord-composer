@@ -2,7 +2,7 @@ import React from 'react';
 
 import styled from '@emotion/styled';
 
-import { chromaticScale, chordTypes, intervalReference } from "../staticData/musicTheory";
+import { chromaticScale, chromaticScaleFull, chordTypes, intervalReference } from "../staticData/musicTheory";
 
 const Chord = styled.div`
 	height: 250px;
@@ -20,26 +20,26 @@ const ChordTile = (props) => {
 	const { currentKey, accidental, Tone } = props;
 
 	const startingNote = accidental === "natural" ? `${currentKey}4` : `${currentKey}${accidental}4`;
-	const startingIndex = chromaticScale.indexOf(startingNote);
+
+	const startingFullNote = chromaticScaleFull.filter(note => note.includes(startingNote));
+	const startingIndex = chromaticScaleFull.indexOf(startingFullNote[0]);
+
 	const { intervals } = chordDetails;
 
-	//Here is a good place to do some partial application / currying. Create a function with the intervalRefernce baked in, for ease of passing around.
 	const chordIntervals = intervals.map(interval => intervalReference[interval]);
 	let chordNotes = chordIntervals.map(interval => chromaticScale[startingIndex + interval]);
 	chordNotes.unshift(chromaticScale[startingIndex])
 
-	const amountOfNotes = chordNotes.length;
-	const polySynth = new Tone.PolySynth(amountOfNotes, Tone.Synth).toMaster();
-
-	const playChord = (chordNotes, duration) => {
-		Tone.context.resume();
+	const playChord = (Tone, chordNotes, duration) => {
+		const amountOfNotes = chordNotes.length;
+		const polySynth = new Tone.PolySynth(amountOfNotes, Tone.Synth).toMaster();
 		polySynth.triggerAttackRelease(chordNotes, duration);
 	}
 
 	return (
 		<Chord>
 			{chordName}
-			<button onClick={() => playChord(chordNotes, '2n')}>Play Chord</button>
+			<button onClick={() => playChord(Tone, chordNotes, '2n')}>Play Chord</button>
 		</Chord>
 	)
 }
