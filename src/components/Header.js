@@ -46,16 +46,15 @@ const FlatSharpContainer = styled.div`
 
 const Header = props => {
 	const { title, subtitle, setTitle, setSubtitle } = useContext(DataHeader);
-	console.log(title);
 	return (
 		<AppHeader>
 			<TitleContainer>
-				<Title value={title} onChange={e => setTitle(e.target.value)}/><br/>
-				<Subtitle value={subtitle} onChange={e => setSubtitle(e.target.value)}/>
+				<Title value={title} onChange={e => setTitle(e.target.value)} /><br />
+				<Subtitle value={subtitle} onChange={e => setSubtitle(e.target.value)} />
 			</TitleContainer>
 			<FlatSharpContainer>
 				<KeySelector />
-				<AccidentalSelector/>
+				<AccidentalSelector />
 			</FlatSharpContainer>
 		</AppHeader>
 	)

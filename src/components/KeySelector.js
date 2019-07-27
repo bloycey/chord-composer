@@ -13,7 +13,7 @@ const KeySelector = () => {
 	return (
 		<select value={currentKey} onChange={setter(setCurrentKey)}>
 			{keys.map(key => (
-				<option value={key} selected={key === currentKey}>{key}</option>
+				<option value={key} key={key}>{key}</option>
 			))
 			}
 		</select>
