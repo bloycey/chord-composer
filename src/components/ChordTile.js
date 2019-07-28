@@ -5,10 +5,10 @@ import styled from '@emotion/styled';
 import { chromaticScale, chromaticScaleFull, chordTypes, intervalsByKey } from "../staticData/musicTheory";
 
 const Chord = styled.div`
-	height: 250px;
+	height: 150px;
 	box-sizing: border-box;
 	border: 1px solid #f6f6f6;
-	width: 25%;
+	width: 20%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -45,7 +45,7 @@ const ChordTile = (props) => {
 	return (
 		<Chord>
 			{chordName}<br />
-			{musicallyCorrectNotes}
+			{musicallyCorrectNotes && musicallyCorrectNotes.map(note => note + ',')}
 			<button onClick={() => playChord(Tone, chordNotes, '2n')}>Play Chord</button>
 			{/* {chordNotes.map(note => <button onClick={() => playNote(Tone, note)}>{note}</button>)} */}
 		</Chord>

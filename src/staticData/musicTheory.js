@@ -1,8 +1,8 @@
 export const keys = ["C", "D", "E", "F", "G", "A", "B"];
-export const notes = ["C", "C#", "Db", "D", "D#", "Eb", "E", "F", "F#", "Gb", "G", "G#", "Ab", "A", "A#", "Bb", "B"]
+export const notes = ["C", "C#", "Db", "D", "Eb", "E", "F", "F#", "Gb", "G", "G#", "Ab", "A", "A#", "Bb", "B"]
 
 // ChromaticScaleFull is used as a reference to look up notes and find their index. chromaticScaleFull and chromaticScale should always be the same length and have the same indices.
-export const chromaticScaleFull = ["C4", "C#4/Db4", "D4", "D#4/Eb4", "E4", "F4", "F#4/Gb4", "G4", "G#4/Ab4", "A4", "A#4/Bb4", "B4", "C5", "C#5/Db5", "D5", "D#5/Eb5", "E5", "F5", "F#5/Gb5", "G5", "G#5/Ab5", "A5", "A#5/Bb5", "B5", "C6"]
+export const chromaticScaleFull = ["C4", "C#4/Db4", "D4", "Eb4", "E4", "F4", "F#4/Gb4", "G4", "G#4/Ab4", "A4", "A#4/Bb4", "B4", "C5", "C#5/Db5", "D5", "D#5/Eb5", "E5", "F5", "F#5/Gb5", "G5", "G#5/Ab5", "A5", "A#5/Bb5", "B5", "C6"]
 
 // ChromaticScale is used to actually build chords. Enharmonically incorrect behind the scenes, but is documented appropriately on the front end.
 export const chromaticScale = ["C4", "C#4", "D4", "D#4", "E4", "F4", "F#4", "G4", "G#4", "A4", "A#4", "B4", "C5", "C#5", "D5", "D#5", "E5", "F5", "F#5", "G5", "G#5", "A5", "A#5", "B5", "C6"]
@@ -207,7 +207,7 @@ export const intervalsByKey = {
 		maj7: "B♯",
 		octave: "C♯",
 		min9: "D",
-		maj9: "D♯",
+		maj9: "D♯"
 	},
 	Db: {
 		maj2: "E♭",
@@ -223,6 +223,118 @@ export const intervalsByKey = {
 		maj7: "C",
 		octave: "D♭",
 		min9: "E",
-		maj9: "E♭",
+		maj9: "E♭"
+	},
+	D: {
+		maj2: "E",
+		min3: "F",
+		maj3: "F♯",
+		perf4: "G",
+		dim5: "A♭",
+		perf5: "A",
+		aug5: "A♯",
+		maj6: "B",
+		dim7: "C♭",
+		min7: "C",
+		maj7: "C♯",
+		octave: "D",
+		min9: "E♭",
+		maj9: "E"
+	},
+	Eb: {
+		maj2: "F",
+		min3: "G♭",
+		maj3: "G",
+		perf4: "A♭",
+		dim5: "B♭♭",
+		perf5: "B♭",
+		aug5: "B",
+		maj6: "C",
+		dim7: "D♭♭",
+		min7: "D♭",
+		maj7: "D",
+		octave: "E♭",
+		min9: "F♭",
+		maj9: "F"
+	},
+	E: {
+		maj2: "F♯",
+		min3: "G",
+		maj3: "G♯",
+		perf4: "A",
+		dim5: "B♭",
+		perf5: "B",
+		aug5: "B♯",
+		maj6: "C♯",
+		dim7: "D♭",
+		min7: "D",
+		maj7: "D♯",
+		octave: "E",
+		min9: "F",
+		maj9: "F♯"
+	},
+	F: {
+		maj2: "G",
+		min3: "A♭",
+		maj3: "A",
+		perf4: "B♭",
+		dim5: "C♭",
+		perf5: "C",
+		aug5: "C♯",
+		maj6: "D",
+		dim7: "E♭♭",
+		min7: "E♭",
+		maj7: "E",
+		octave: "F",
+		min9: "G♭",
+		maj9: "G"
+	},
+	Fs: {
+		maj2: "G♯",
+		min3: "A",
+		maj3: "A♯",
+		perf4: "B",
+		dim5: "C",
+		perf5: "C♯",
+		aug5: "C𝄪",
+		maj6: "D♯",
+		dim7: "E♭",
+		min7: "E",
+		maj7: "E♯",
+		octave: "F♯",
+		min9: "G",
+		maj9: "G♯"
+	},
+	Gb: {
+		maj2: "A♭",
+		min3: "B♭♭",
+		maj3: "B♭",
+		perf4: "C♭",
+		dim5: "D♭♭",
+		perf5: "D♭",
+		aug5: "D",
+		maj6: "E♭",
+		dim7: "F♭♭",
+		min7: "F♭",
+		maj7: "F",
+		octave: "G♭",
+		min9: "A",
+		maj9: "A♭"
+	},
+	G: {
+		maj2: "A♭",
+		min3: "B♭♭",
+		maj3: "B♭",
+		perf4: "C♭",
+		dim5: "D♭♭",
+		perf5: "D♭",
+		aug5: "D",
+		maj6: "E♭",
+		dim7: "F♭♭",
+		min7: "F♭",
+		maj7: "F",
+		octave: "G♭",
+		min9: "A",
+		maj9: "A♭"
 	}
 }
