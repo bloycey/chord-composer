@@ -42,9 +42,9 @@ const ChordTile = (props) => {
 	return (
 		<Chord>
 			{chordName}<br />
-			{chordNotes}
+			{musicallyCorrectNotes}
 			<button onClick={() => playChord(Tone, chordNotes, '2n')}>Play Chord</button>
-			{chordNotes.map(note => <button onClick={() => playNote(Tone, note)}>{note}</button>)}
+			{/* {chordNotes.map(note => <button onClick={() => playNote(Tone, note)}>{note}</button>)} */}
 		</Chord>
 	)
 }

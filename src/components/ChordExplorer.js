@@ -15,7 +15,16 @@ const Container = styled.div`
 const ChordExplorer = () => {
 	const { currentKey, accidental } = useContext(DataChordExplorer);
 
-	const getAccidentalSymbol = accidental => accidental == "natural" ? "" : accidental;
+	const getAccidentalSymbol = accidental => {
+		switch (accidental) {
+			case "b":
+				return "♭"
+			case "#":
+				return "♯"
+			default:
+				return ""
+		}
+	}
 
 	return (
 		<Container>
