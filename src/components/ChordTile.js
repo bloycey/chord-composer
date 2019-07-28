@@ -2,7 +2,7 @@ import React from 'react';
 
 import styled from '@emotion/styled';
 
-import { chromaticScale, chromaticScaleFull, chordTypes, intervalReference } from "../staticData/musicTheory";
+import { chromaticScale, chromaticScaleFull, chordTypes } from "../staticData/musicTheory";
 
 const Chord = styled.div`
 	height: 250px;
@@ -18,17 +18,12 @@ const Chord = styled.div`
 const ChordTile = (props) => {
 	const { chordDetails, chordName } = props.chordInfo;
 	const { currentKey, accidental, Tone } = props;
-
-	const startingNote = accidental === "natural" ? `${currentKey}4` : `${currentKey}${accidental}4`;
-
-	const startingFullNote = chromaticScaleFull.filter(note => note.includes(startingNote));
-	const startingIndex = chromaticScaleFull.indexOf(startingFullNote[0]);
-
 	const { intervals } = chordDetails;
 
-	const chordIntervals = intervals.map(interval => intervalReference[interval]);
-	let chordNotes = chordIntervals.map(interval => chromaticScale[startingIndex + interval]);
-	chordNotes.unshift(chromaticScale[startingIndex])
+	const startingNote = accidental === "natural" ? `${currentKey}4` : `${currentKey}${accidental}4`;
+	const startingFullNote = chromaticScaleFull.filter(note => note.includes(startingNote));
+	const startingIndex = chromaticScaleFull.indexOf(startingFullNote[0]);
+	const chordNotes = [chromaticScale[startingIndex], ...intervals.map(interval => chromaticScale[startingIndex + interval])];
 
 	const playChord = (Tone, chordNotes, duration) => {
 		const amountOfNotes = chordNotes.length;
@@ -36,10 +31,17 @@ const ChordTile = (props) => {
 		polySynth.triggerAttackRelease(chordNotes, duration);
 	}
 
+	const playNote = (Tone, note) => {
+		const synth = new Tone.Synth().toMaster();
+		synth.triggerAttackRelease(note, '2n');
+	}
+
 	return (
 		<Chord>
-			{chordName}
+			{chordName}<br />
+			{chordNotes}
 			<button onClick={() => playChord(Tone, chordNotes, '2n')}>Play Chord</button>
+			{chordNotes.map(note => <button onClick={() => playNote(Tone, note)}>{note}</button>)}
 		</Chord>
 	)
 }
