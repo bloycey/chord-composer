@@ -24,8 +24,8 @@ const AccidentalSelector = () => {
 		setAccidental(value);
 	}
 
-	const createSharpNote = note => `${note}#`;
-	const createFlatNote = note => `${note}b`;
+	const createSharpNote = note => `${note}♯`;
+	const createFlatNote = note => `${note}♭`;
 	const noteExists = (note, allowedNotes) => allowedNotes.includes(note);
 
 	return (
@@ -36,12 +36,12 @@ const AccidentalSelector = () => {
 				</div>
 				{noteExists(createSharpNote(currentKey), notes) &&
 					<div>
-						<input type="radio" name="flatsOrSharps" value="#" checked={accidental === "#"} onChange={setter(setAccidental, setCurrentKey)} /><AccidentalText>Sharp</AccidentalText>
+						<input type="radio" name="flatsOrSharps" value="♯" checked={accidental === "♯"} onChange={setter(setAccidental, setCurrentKey)} /><AccidentalText>Sharp</AccidentalText>
 					</div>
 				}
 				{noteExists(createFlatNote(currentKey), notes) &&
 					<div>
-						<input type="radio" name="flatsOrSharps" value="b" checked={accidental === "b"} onChange={setter(setAccidental, setCurrentKey)} /><AccidentalText>Flat</AccidentalText>
+						<input type="radio" name="flatsOrSharps" value="♭" checked={accidental === "♭"} onChange={setter(setAccidental, setCurrentKey)} /><AccidentalText>Flat</AccidentalText>
 					</div>
 				}
 			</div>

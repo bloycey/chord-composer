@@ -2,7 +2,7 @@ import React from 'react';
 
 import styled from '@emotion/styled';
 
-import { chromaticScale, chromaticScaleFull, chordTypes } from "../staticData/musicTheory";
+import { chromaticScale, chromaticScaleFull, chordTypes, intervalsByKey } from "../staticData/musicTheory";
 
 const Chord = styled.div`
 	height: 250px;
@@ -18,12 +18,15 @@ const Chord = styled.div`
 const ChordTile = (props) => {
 	const { chordDetails, chordName } = props.chordInfo;
 	const { currentKey, accidental, Tone } = props;
-	const { intervals } = chordDetails;
+	const { intervals, intervalString } = chordDetails;
 
 	const startingNote = accidental === "natural" ? `${currentKey}4` : `${currentKey}${accidental}4`;
 	const startingFullNote = chromaticScaleFull.filter(note => note.includes(startingNote));
 	const startingIndex = chromaticScaleFull.indexOf(startingFullNote[0]);
 	const chordNotes = [chromaticScale[startingIndex], ...intervals.map(interval => chromaticScale[startingIndex + interval])];
+
+	//TODO: Remove failsave check once all keys have been completed.
+	const musicallyCorrectNotes = intervalsByKey[currentKey] && [currentKey, ...intervalString.map(interval => intervalsByKey[currentKey][interval])];
 
 	const playChord = (Tone, chordNotes, duration) => {
 		const amountOfNotes = chordNotes.length;
