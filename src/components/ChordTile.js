@@ -26,7 +26,9 @@ const ChordTile = (props) => {
 	const chordNotes = [chromaticScale[startingIndex], ...intervals.map(interval => chromaticScale[startingIndex + interval])];
 
 	//TODO: Remove failsave check once all keys have been completed.
-	const musicallyCorrectNotes = intervalsByKey[currentKey] && [currentKey, ...intervalString.map(interval => intervalsByKey[currentKey][interval])];
+	const fullKey = (`${currentKey}${accidental}`).replace("#", "s").replace("natural", "");
+	const musicallyCorrectNotes = intervalsByKey[fullKey] && [(`${currentKey}${accidental}`).replace("natural", ""), ...intervalString.map(interval => intervalsByKey[fullKey][interval])];
+	console.log(musicallyCorrectNotes)
 
 	const playChord = (Tone, chordNotes, duration) => {
 		const amountOfNotes = chordNotes.length;

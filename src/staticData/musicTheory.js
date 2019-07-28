@@ -192,5 +192,21 @@ export const intervalsByKey = {
 		octave: "C",
 		min9: "D♭",
 		maj9: "D",
+	},
+	Cs: {
+		maj2: "D♯",
+		min3: "E",
+		maj3: "E♯",
+		perf4: "F♯",
+		dim5: "G",
+		perf5: "G♯",
+		aug5: "G𝄪",
+		maj6: "A♯",
+		dim7: "B♭",
+		min7: "B",
+		maj7: "B♯",
+		octave: "C♯",
+		min9: "D",
+		maj9: "D♯",
 	}
 }

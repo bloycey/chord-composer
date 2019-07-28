@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Tone from 'tone';
 
 import styled from '@emotion/styled';
@@ -13,6 +13,7 @@ const Container = styled.div`
 `
 
 const ChordExplorer = () => {
+
 	const { currentKey, accidental } = useContext(DataChordExplorer);
 
 	const getAccidentalSymbol = accidental => {
