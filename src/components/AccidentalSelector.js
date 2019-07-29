@@ -17,9 +17,12 @@ const AccidentalText = styled.span`
 `
 
 const AccidentalSelector = () => {
-	const { accidental, setAccidental, currentKey, setCurrentKey } = useContext(DataHeader);
+	const { accidental, setAccidental, currentKey, setCurrentKey, init, setInit } = useContext(DataHeader);
 
 	const setter = setAccidental => e => {
+		if(!init) {
+			setInit(true);
+		}
 		const value = e.target.value;
 		setAccidental(value);
 	}

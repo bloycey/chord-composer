@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 
 import AccidentalSelector from "./AccidentalSelector";
 import KeySelector from "./KeySelector";
+import OctaveSelector from "./OctaveSelector";
 import { DataHeader } from "../App.js";
 
 const TitleContainer = styled.div`
@@ -40,7 +41,7 @@ const Subtitle = styled.input`
 	}
 `
 
-const FlatSharpContainer = styled.div`
+const OptionsContainer = styled.div`
 	display: flex;
 `
 
@@ -52,10 +53,11 @@ const Header = props => {
 				<Title value={title} onChange={e => setTitle(e.target.value)} /><br />
 				<Subtitle value={subtitle} onChange={e => setSubtitle(e.target.value)} />
 			</TitleContainer>
-			<FlatSharpContainer>
+			<OptionsContainer>
+				<OctaveSelector />
 				<KeySelector />
 				<AccidentalSelector />
-			</FlatSharpContainer>
+			</OptionsContainer>
 		</AppHeader>
 	)
 }

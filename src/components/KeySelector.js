@@ -3,13 +3,18 @@ import styled from '@emotion/styled';
 
 import { keys } from "../staticData/musicTheory";
 import { DataHeader } from "../App.js";
+import { playQuarterNoteFn } from "../helpers/helpers";
 
 const KeySelector = () => {
-	const { currentKey, setCurrentKey, setAccidental } = useContext(DataHeader);
+	const { currentKey, setCurrentKey, setAccidental, init, setInit } = useContext(DataHeader);
 	const setter = set => e => {
+		if(!init) {
+			setInit(true);
+		}
 		const value = e.target.value;
 		set(value);
 		setAccidental("natural");
+		playQuarterNoteFn(`${currentKey}`)
 	}
 	return (
 		<select value={currentKey} onChange={setter(setCurrentKey)}>

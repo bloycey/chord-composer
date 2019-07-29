@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import Tone from 'tone';
 
 import styled from '@emotion/styled';
@@ -6,6 +6,7 @@ import styled from '@emotion/styled';
 import ChordTile from "./ChordTile";
 import { DataChordExplorer } from "../App";
 import { chordTypes } from "../staticData/musicTheory";
+import { getAccidentalSymbol } from "../helpers/helpers";
 
 const Container = styled.div`
 	display: flex;
@@ -15,17 +16,6 @@ const Container = styled.div`
 const ChordExplorer = () => {
 
 	const { currentKey, accidental, octave } = useContext(DataChordExplorer);
-
-	const getAccidentalSymbol = accidental => {
-		switch (accidental) {
-			case "b":
-				return "♭"
-			case "#":
-				return "♯"
-			default:
-				return ""
-		}
-	}
 
 	return (
 		<Container>
