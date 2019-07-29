@@ -1,11 +1,11 @@
 export const keys = ["C", "D", "E", "F", "G", "A", "B"];
-export const notes = ["C", "C#", "Db", "D", "Eb", "E", "F", "F#", "Gb", "G", "G#", "Ab", "A", "A#", "Bb", "B"]
+export const notes = ["C", "C#", "Db", "D", "Eb", "E", "F", "F#", "Gb", "G", "Ab", "A", "Bb", "B"]
 
 // ChromaticScaleFull is used as a reference to look up notes and find their index. chromaticScaleFull and chromaticScale should always be the same length and have the same indices.
-export const chromaticScaleFull = ["C4", "C#4/Db4", "D4", "Eb4", "E4", "F4", "F#4/Gb4", "G4", "G#4/Ab4", "A4", "A#4/Bb4", "B4", "C5", "C#5/Db5", "D5", "D#5/Eb5", "E5", "F5", "F#5/Gb5", "G5", "G#5/Ab5", "A5", "A#5/Bb5", "B5", "C6"]
+export const chromaticScaleFull = octave => [`C${octave}`, `C#${octave}/Db${octave}`, `D${octave}`, `Eb${octave}`, `E${octave}`, `F${octave}`, `F#${octave}/Gb${octave}`, `G${octave}`, `G#${octave}/Ab${octave}`, `A${octave}`, `A#${octave}/Bb${octave}`, `B${octave}`, `C${octave + 1}`, `C#${octave + 1}/Db${octave + 1}`, `D${octave + 1}`, `D#${octave + 1}/Eb${octave + 1}`, `E${octave + 1}`, `F${octave + 1}`, `F#${octave + 1}/Gb${octave + 1}`, `G${octave + 1}`, `G#${octave + 1}/Ab${octave + 1}`, `A${octave + 1}`, `A#${octave + 1}/Bb${octave + 1}`, `B${octave + 1}`, `C${octave + 2}`]
 
 // ChromaticScale is used to actually build chords. Enharmonically incorrect behind the scenes, but is documented appropriately on the front end.
-export const chromaticScale = ["C4", "C#4", "D4", "D#4", "E4", "F4", "F#4", "G4", "G#4", "A4", "A#4", "B4", "C5", "C#5", "D5", "D#5", "E5", "F5", "F#5", "G5", "G#5", "A5", "A#5", "B5", "C6"]
+export const chromaticScale = octave => [`C${octave}`, `C#${octave}`, `D${octave}`, `D#${octave}`, `E${octave}`, `F${octave}`, `F#${octave}`, `G${octave}`, `G#${octave}`, `A${octave}`, `A#${octave}`, `B${octave}`, `C${octave + 1}`, `C#${octave + 1}`, `D${octave + 1}`, `D#${octave + 1}`, `E${octave + 1}`, `F${octave + 1}`, `F#${octave + 1}`, `G${octave + 1}`, `G#${octave + 1}`, `A${octave + 1}`, `A#${octave + 1}`, `B${octave + 1}`, `C${octave + 2}`]
 
 // intervals as semitones
 const maj2 = 2;
@@ -322,19 +322,83 @@ export const intervalsByKey = {
 		maj9: "A♭"
 	},
 	G: {
-		maj2: "A♭",
-		min3: "B♭♭",
-		maj3: "B♭",
-		perf4: "C♭",
-		dim5: "D♭♭",
-		perf5: "D♭",
-		aug5: "D",
-		maj6: "E♭",
-		dim7: "F♭♭",
-		min7: "F♭",
-		maj7: "F",
-		octave: "G♭",
-		min9: "A",
-		maj9: "A♭"
+		maj2: "A",
+		min3: "B♭",
+		maj3: "B",
+		perf4: "C",
+		dim5: "D♭",
+		perf5: "D",
+		aug5: "D♯",
+		maj6: "E",
+		dim7: "F♭",
+		min7: "F",
+		maj7: "F♯",
+		octave: "G",
+		min9: "A♭",
+		maj9: "A"
+	},
+	Ab: {
+		maj2: "B♭",
+		min3: "C♭",
+		maj3: "C",
+		perf4: "D♭",
+		dim5: "E♭♭",
+		perf5: "E♭",
+		aug5: "E",
+		maj6: "F",
+		dim7: "G♭♭",
+		min7: "G♭",
+		maj7: "G",
+		octave: "A♭",
+		min9: "B",
+		maj9: "B♭"
+	},
+	A: {
+		maj2: "B",
+		min3: "C",
+		maj3: "C♯",
+		perf4: "D",
+		dim5: "E♭",
+		perf5: "E",
+		aug5: "E♯",
+		maj6: "F♯",
+		dim7: "G♭",
+		min7: "G",
+		maj7: "G♯",
+		octave: "A",
+		min9: "B♭",
+		maj9: "B"
+	},
+	Bb: {
+		maj2: "C",
+		min3: "D♭",
+		maj3: "D",
+		perf4: "E♭",
+		dim5: "F♭",
+		perf5: "F",
+		aug5: "F♯",
+		maj6: "G",
+		dim7: "A♭♭",
+		min7: "G♭",
+		maj7: "A",
+		octave: "B♭",
+		min9: "C♭",
+		maj9: "C"
+	},
+	B: {
+		maj2: "C♯",
+		min3: "D",
+		maj3: "D♯",
+		perf4: "E",
+		dim5: "F",
+		perf5: "F♯",
+		aug5: "F𝄪",
+		maj6: "G♯",
+		dim7: "A♭",
+		min7: "A",
+		maj7: "A♯",
+		octave: "B",
+		min9: "C",
+		maj9: "C♯"
 	}
 }

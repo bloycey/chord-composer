@@ -14,7 +14,7 @@ const Container = styled.div`
 
 const ChordExplorer = () => {
 
-	const { currentKey, accidental } = useContext(DataChordExplorer);
+	const { currentKey, accidental, octave } = useContext(DataChordExplorer);
 
 	const getAccidentalSymbol = accidental => {
 		switch (accidental) {
@@ -33,7 +33,7 @@ const ChordExplorer = () => {
 				const chordName = `${currentKey}${getAccidentalSymbol(accidental)}${chordTypes[chord].shortName}`;
 				const chordDetails = chordTypes[chord];
 				const chordInfo = { chordDetails, chordName }
-				return <ChordTile chordInfo={chordInfo} currentKey={currentKey} accidental={accidental} Tone={Tone} key={chordName} />
+				return <ChordTile chordInfo={chordInfo} currentKey={currentKey} accidental={accidental} Tone={Tone} key={chordName} octave={octave} />
 			})}
 		</Container>
 	)

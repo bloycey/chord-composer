@@ -17,19 +17,19 @@ const Chord = styled.div`
 
 const ChordTile = (props) => {
 	const { chordDetails, chordName } = props.chordInfo;
-	const { currentKey, accidental, Tone } = props;
+	const { currentKey, accidental, Tone, octave } = props;
 	const { intervals, intervalString } = chordDetails;
 
-	const startingNote = accidental === "natural" ? `${currentKey}4` : `${currentKey}${accidental}4`;
-	const startingFullNote = chromaticScaleFull.filter(note => note.includes(startingNote));
-	const startingIndex = chromaticScaleFull.indexOf(startingFullNote[0]);
-	const chordNotes = [chromaticScale[startingIndex], ...intervals.map(interval => chromaticScale[startingIndex + interval])];
+	const startingNote = accidental === "natural" ? `${currentKey}${octave}` : `${currentKey}${accidental}${octave}`;
+	const startingFullNote = chromaticScaleFull(octave).filter(note => note.includes(startingNote));
+	const startingIndex = chromaticScaleFull(octave).indexOf(startingFullNote[0]);
+	const chordNotes = [chromaticScale(octave)[startingIndex], ...intervals.map(interval => chromaticScale(octave)[startingIndex + interval])];
 
-	//TODO: Remove failsave check once all keys have been completed.
 	const fullKey = (`${currentKey}${accidental}`).replace("#", "s").replace("natural", "");
 	const keyWithSymbols = (`${currentKey}${accidental}`).replace("natural", "").replace("b", "♭").replace("#", "♯");
-	const musicallyCorrectNotes = intervalsByKey[fullKey] && [keyWithSymbols, ...intervalString.map(interval => intervalsByKey[fullKey][interval])];
+	const musicallyCorrectNotes = [keyWithSymbols, ...intervalString.map(interval => intervalsByKey[fullKey][interval])];
 	console.log(musicallyCorrectNotes)
+	console.log("chordNotes", chordNotes)
 
 	const playChord = (Tone, chordNotes, duration) => {
 		const amountOfNotes = chordNotes.length;

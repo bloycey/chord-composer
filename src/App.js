@@ -14,9 +14,10 @@ function App() {
 	const [subtitle, setSubtitle] = useState("Set a subtitle here");
 	const [currentKey, setCurrentKey] = useState("C");
 	const [accidental, setAccidental] = useState("natural");
+	const [octave, setOctave] = useState(3);
 
-	const headerData = { title, setTitle, subtitle, setSubtitle, currentKey, setCurrentKey, accidental, setAccidental };
-	const chordExplorerData = { currentKey, accidental }
+	const headerData = { title, setTitle, subtitle, setSubtitle, currentKey, setCurrentKey, accidental, setAccidental, octave, setOctave };
+	const chordExplorerData = { currentKey, accidental, octave };
 
 
 	return (
