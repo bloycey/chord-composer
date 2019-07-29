@@ -17,6 +17,7 @@ function App() {
 	const [currentKey, setCurrentKey] = useState("C");
 	const [accidental, setAccidental] = useState("natural");
 	const [octave, setOctave] = useState(3);
+	const [instrument, setInstrument] = useState("Synth");
 
 	const headerData = { title, setTitle, subtitle, setSubtitle, currentKey, setCurrentKey, accidental, setAccidental, octave, setOctave };
 	const chordExplorerData = { currentKey, accidental, octave };
@@ -24,9 +25,9 @@ function App() {
 
 	// Play current note when octave or accidental changes
 	useEffect(() => {
-			const playCurrentNote = playQuarterNoteFn(currentRootNote, "Synth");
-			return () => playCurrentNote();
-	}, [octave, accidental, currentRootNote]);
+			const playCurrentNote = playQuarterNoteFn(currentRootNote, instrument);
+			playCurrentNote();
+	}, [octave, accidental, currentKey, currentRootNote, instrument]);
 
 	return (
 		<div className="App">
@@ -36,9 +37,6 @@ function App() {
 			<DataChordExplorer.Provider value={chordExplorerData}>
 				<ChordExplorer />
 			</DataChordExplorer.Provider>
-			<p>Current Title: {title}</p>
-			<p>Current Subtitle: {subtitle}</p>
-			<p>Current Key: {currentKey} {accidental !== "natural" && accidental}</p>
 			<Playback />
 		</div>
 	);

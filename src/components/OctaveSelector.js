@@ -24,13 +24,13 @@ const OctaveSelector = () => {
 
 	const upOctave = (currentOctave, setOctave) => {
 		if(currentOctave < 6) {
-			setOctave(currentOctave + 1);
+			setOctave(prevOctave => prevOctave + 1);
 		}
 	}
 
 	const downOctave = (currentOctave, setOctave) => {
 		if(currentOctave > 1) {
-			setOctave(currentOctave - 1);
+			setOctave(prevOctave => prevOctave - 1);
 		}
 	}
 	return (
