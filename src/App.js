@@ -11,25 +11,22 @@ export const DataChordExplorer = React.createContext();
 
 function App() {
 
-	// All Date
-	const [init, setInit] = useState(false);
+	// All Data
 	const [title, setTitle] = useState("Add a title here");
 	const [subtitle, setSubtitle] = useState("Set a subtitle here");
 	const [currentKey, setCurrentKey] = useState("C");
 	const [accidental, setAccidental] = useState("natural");
 	const [octave, setOctave] = useState(3);
 
-	const headerData = { title, setTitle, subtitle, setSubtitle, currentKey, setCurrentKey, accidental, setAccidental, octave, setOctave, Tone, setInit, init };
+	const headerData = { title, setTitle, subtitle, setSubtitle, currentKey, setCurrentKey, accidental, setAccidental, octave, setOctave };
 	const chordExplorerData = { currentKey, accidental, octave };
 	const currentRootNote = tonifyNote(`${currentKey}${accidental}${octave}`);
-	const playCurrentNote = playQuarterNoteFn(currentRootNote, "Synth");
 
 	// Play current note when octave or accidental changes
 	useEffect(() => {
-		if (init) {
-			playCurrentNote();
-		}
-	}, [octave, accidental, playCurrentNote, init]);
+			const playCurrentNote = playQuarterNoteFn(currentRootNote, "Synth");
+			return () => playCurrentNote();
+	}, [octave, accidental, currentRootNote]);
 
 	return (
 		<div className="App">

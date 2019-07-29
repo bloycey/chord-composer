@@ -6,11 +6,8 @@ import { DataHeader } from "../App.js";
 import { playQuarterNoteFn } from "../helpers/helpers";
 
 const KeySelector = () => {
-	const { currentKey, setCurrentKey, setAccidental, init, setInit } = useContext(DataHeader);
+	const { currentKey, setCurrentKey, setAccidental } = useContext(DataHeader);
 	const setter = set => e => {
-		if(!init) {
-			setInit(true);
-		}
 		const value = e.target.value;
 		set(value);
 		setAccidental("natural");

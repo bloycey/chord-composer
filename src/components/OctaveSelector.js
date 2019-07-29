@@ -20,21 +20,15 @@ const OctaveDisplay = styled.div`
 `
 
 const OctaveSelector = () => {
-	const { octave, setOctave, currentKey, accidental, init, setInit } = useContext(DataHeader);
+	const { octave, setOctave } = useContext(DataHeader);
 
 	const upOctave = (currentOctave, setOctave) => {
-		if(!init) {
-			setInit(true);
-		}
 		if(currentOctave < 6) {
 			setOctave(currentOctave + 1);
 		}
 	}
 
 	const downOctave = (currentOctave, setOctave) => {
-		if(!init) {
-			setInit(true);
-		}
 		if(currentOctave > 1) {
 			setOctave(currentOctave - 1);
 		}
