@@ -1,12 +1,24 @@
 import Tone from "tone";
 
-const _buildPlayNote = (note, duration, instrument, Tone) => {
-  const synth = new Tone[instrument]().toMaster();
-  synth.triggerAttackRelease(note, duration);
+import A0 from "../instruments/piano/A0.ogg";
+import A1 from "../instruments/piano/A1.ogg";
+import A2 from "../instruments/piano/A2.ogg";
+import A3 from "../instruments/piano/A3.ogg";
+import A4 from "../instruments/piano/A4.ogg";
+import A5 from "../instruments/piano/A5.ogg";
+import A6 from "../instruments/piano/A6.ogg";
+
+export const pianoNotes = { A0, A1, A2, A3, A4, A5, A6 };
+
+const buildNote = toneLib => instrument => duration => note => {
+	const sound = new Tone[instrument]().toMaster();
+	sound.triggerAttackRelease(note, duration);
 };
 
-export const playNote = (note, duration) => _buildPlayNote(note, duration, Tone);
-export const playQuarterNoteFn = (note, instrument) => () => _buildPlayNote(note, '4n', instrument, Tone );
+const toneLibrary = buildNote(Tone);
+const synth = toneLibrary("Synth");
+export const synthQuarterNote = synth('4n');
+
 
 export const getAccidentalSymbol = accidental => {
 	switch (accidental) {

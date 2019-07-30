@@ -11,7 +11,6 @@ const KeySelector = () => {
 		const value = e.target.value;
 		set(value);
 		setAccidental("natural");
-		playQuarterNoteFn(`${currentKey}`)
 	}
 	return (
 		<select value={currentKey} onChange={setter(setCurrentKey)}>
