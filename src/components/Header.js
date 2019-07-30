@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import styled from '@emotion/styled';
 
 import AccidentalSelector from "./AccidentalSelector";
+import InstrumentSelector from "./InstrumentSelector"; 
 import KeySelector from "./KeySelector";
 import OctaveSelector from "./OctaveSelector";
 import { DataHeader } from "../App.js";
@@ -43,6 +44,7 @@ const Subtitle = styled.input`
 
 const OptionsContainer = styled.div`
 	display: flex;
+  align-items: center;
 `
 
 const Header = props => {
@@ -54,6 +56,7 @@ const Header = props => {
 				<Subtitle value={subtitle} onChange={e => setSubtitle(e.target.value)} />
 			</TitleContainer>
 			<OptionsContainer>
+        <InstrumentSelector />
 				<OctaveSelector />
 				<KeySelector />
 				<AccidentalSelector />
