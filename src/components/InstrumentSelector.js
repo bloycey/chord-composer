@@ -10,14 +10,14 @@ const InstrumentSelector = () => {
 		const value = e.target.value;
 		set(value);
 	}
-  return (
-    <div>
-      <select id="instrumentSelect" name="instrumentSelect" onChange={setter(setInstrument)} >
-        <option value="synth">Synth</option>
-        <option value="piano">Piano</option>
-      </select>
-    </div>
-  )  
+	return (
+	<div>
+		<select id="instrumentSelect" name="instrumentSelect" onChange={setter(setInstrument)} >
+		<option value="synth">Synth</option>
+		<option value="piano">Piano</option>
+		</select>
+	</div>
+	)
 }
 
 export default InstrumentSelector;

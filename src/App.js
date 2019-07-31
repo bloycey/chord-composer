@@ -12,27 +12,26 @@ export const DataChordExplorer = React.createContext();
 function App() {
 
 	// All Data
-	const { A0, A1, A2, A3, A4, A5, A6 } = pianoNotes;
 	const [toneBuffer, setToneBuffer] = useState(null);
 	const [title, setTitle] = useState("Add a title here");
 	const [subtitle, setSubtitle] = useState("Set a subtitle here");
 	const [currentKey, setCurrentKey] = useState("C");
 	const [accidental, setAccidental] = useState("natural");
 	const [octave, setOctave] = useState(3);
-	const [instrument, setInstrument] = useState("Synth");
+	const [instrument, setInstrument] = useState("synth");
 
 	const headerData = { title, setTitle, subtitle, setSubtitle, currentKey, setCurrentKey, accidental, setAccidental, octave, setOctave, toneBuffer, instrument, setInstrument };
-	const chordExplorerData = { currentKey, accidental, octave, toneBuffer };
+	const chordExplorerData = { currentKey, accidental, octave, toneBuffer, instrument };
 	const currentRootNote = tonifyNote(`${currentKey}${accidental}${octave}`);
 
-	const handleSoundsLoaded = (toneBuffers) => {
-		if (toneBuffer === null) {
-			setToneBuffer(toneBuffers);
-		}
-	};
 
 	useEffect(() => {
-		const toneBuffers = new Tone.Buffers({ A0, A1, A2, A3, A4, A5, A6 }, toneBuffers => handleSoundsLoaded(toneBuffers));
+		const handleSoundsLoaded = (toneBuffers) => {
+			if (toneBuffer === null) {
+				setToneBuffer(toneBuffers);
+			}
+		};
+		const toneBuffers = new Tone.Buffers(pianoNotes, toneBuffers => handleSoundsLoaded(toneBuffers));
 	}, [toneBuffer]);
 
 
