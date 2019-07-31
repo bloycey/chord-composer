@@ -22,7 +22,7 @@ function App() {
 	const [instrument, setInstrument] = useState("Synth");
 
 	const headerData = { title, setTitle, subtitle, setSubtitle, currentKey, setCurrentKey, accidental, setAccidental, octave, setOctave, toneBuffer, instrument, setInstrument };
-	const chordExplorerData = { currentKey, accidental, octave };
+	const chordExplorerData = { currentKey, accidental, octave, toneBuffer };
 	const currentRootNote = tonifyNote(`${currentKey}${accidental}${octave}`);
 
 	const handleSoundsLoaded = (toneBuffers) => {
