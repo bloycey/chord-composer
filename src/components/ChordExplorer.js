@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import Tone from 'tone';
 
 import styled from '@emotion/styled';
 
@@ -23,7 +22,7 @@ const ChordExplorer = () => {
 				const chordName = `${currentKey}${getAccidentalSymbol(accidental)}${chordTypes[chord].shortName}`;
 				const chordDetails = chordTypes[chord];
 				const chordInfo = { chordDetails, chordName }
-				return <ChordTile chordInfo={chordInfo} currentKey={currentKey} accidental={accidental} Tone={Tone} key={chordName} octave={octave} toneBuffer={toneBuffer} instrument={instrument} />
+				return <ChordTile chordInfo={chordInfo} currentKey={currentKey} accidental={accidental}  key={chordName} octave={octave} toneBuffer={toneBuffer} instrument={instrument} />
 			})}
 		</Container>
 	)

@@ -18,7 +18,7 @@ const Chord = styled.div`
 
 const ChordTile = (props) => {
 const { chordDetails, chordName } = props.chordInfo;
-const { currentKey, accidental, Tone, octave, toneBuffer, instrument } = props;
+const { currentKey, accidental, octave, toneBuffer, instrument } = props;
 const { intervals, intervalString } = chordDetails;
 const startingNote = accidental === "natural" ? `${currentKey}${octave}` : `${currentKey}${accidental}${octave}`;
 const startingFullNote = chromaticScaleFull(octave).filter(note => note.includes(startingNote));

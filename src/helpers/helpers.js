@@ -1,4 +1,3 @@
-import React, { useContext } from "react";
 import Tone from "tone";
 
 import A0 from "../instruments/piano/A0.ogg";
