@@ -26,11 +26,12 @@ function App() {
 
 
 	useEffect(() => {
-		const handleSoundsLoaded = (toneBuffers) => {
+		const handleSoundsLoaded = toneBuffers => {
 			if (toneBuffer === null) {
 				setToneBuffer(toneBuffers);
 			}
 		};
+
 		const toneBuffers = new Tone.Buffers(pianoNotes, toneBuffers => handleSoundsLoaded(toneBuffers));
 	}, [toneBuffer]);
 

@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import styled from '@emotion/styled';
 
 import { DataHeader } from "../App.js";
-import { playQuarterNoteFn, tonifyNote } from "../helpers/helpers";
 
 const Root = styled.div`
 	display: flex;
