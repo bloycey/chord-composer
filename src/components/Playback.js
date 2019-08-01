@@ -4,7 +4,7 @@ import Tone from "tone";
 const Playback = ({ toneBuffer }) => {
 	const playNote = () => {
 		const pianoInstrument = new Tone.Sampler({
-			"A4": toneBuffer.get("A4")
+			"C3": toneBuffer.get("C3")
 		}).toMaster();
 		pianoInstrument.triggerAttackRelease('C4', '1n');
 	}

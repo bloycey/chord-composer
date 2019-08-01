@@ -1,14 +1,15 @@
 import Tone from "tone";
 
-import A0 from "../instruments/piano/A0.ogg";
-import A1 from "../instruments/piano/A1.ogg";
-import A2 from "../instruments/piano/A2.ogg";
-import A3 from "../instruments/piano/A3.ogg";
-import A4 from "../instruments/piano/A4.ogg";
-import A5 from "../instruments/piano/A5.ogg";
-import A6 from "../instruments/piano/A6.ogg";
+import C1 from "../instruments/piano/C1.mp3";
+import C2 from "../instruments/piano/C2.mp3";
+import C3 from "../instruments/piano/C3.mp3";
+import C4 from "../instruments/piano/C4.mp3";
+import G1 from "../instruments/piano/G1.mp3";
+import G2 from "../instruments/piano/G2.mp3";
+import G3 from "../instruments/piano/G3.mp3";
+import G4 from "../instruments/piano/G4.mp3";
 
-export const pianoNotes = { A0, A1, A2, A3, A4, A5, A6 };
+export const pianoNotes = { C1, G1, C2, G2, C3, G3, C4, G4 };
 
 const buildNote = toneLib => instrument => duration => note => {
 	const sound = new Tone[instrument]().toMaster();
@@ -19,8 +20,8 @@ const toneLibrary = buildNote(Tone);
 const synth = toneLibrary("Synth");
 export const synthQuarterNote = synth('4n');
 
-const buildPlayChord = Tone => ( toneBuffer, instrument, chordNotes, duration) => {
-	switch(instrument) {
+const buildPlayChord = Tone => (toneBuffer, instrument, chordNotes, duration) => {
+	switch (instrument) {
 		case "synth":
 			const amountOfNotes = chordNotes.length;
 			const polySynth = new Tone.PolySynth(amountOfNotes, Tone.Synth).toMaster();
@@ -28,23 +29,23 @@ const buildPlayChord = Tone => ( toneBuffer, instrument, chordNotes, duration) =
 			break;
 		case "piano":
 			const pianoInstrument = new Tone.Sampler({
-				"A0": toneBuffer.get("A0"),
-				"A1": toneBuffer.get("A1"),
-				"A2": toneBuffer.get("A2"),
-				"A3": toneBuffer.get("A3"),
-				"A4": toneBuffer.get("A4"),
-				"A5": toneBuffer.get("A5"),
-				"A6": toneBuffer.get("A6")
-				}).toMaster();
-				chordNotes.forEach(note => pianoInstrument.triggerAttackRelease(note, duration));
-				break;
+				"C1": toneBuffer.get("C1"),
+				"C2": toneBuffer.get("C2"),
+				"C3": toneBuffer.get("C3"),
+				"C4": toneBuffer.get("C4"),
+				"G1": toneBuffer.get("G1"),
+				"G2": toneBuffer.get("G2"),
+				"G3": toneBuffer.get("G3"),
+				"G4": toneBuffer.get("G4")
+			}).toMaster();
+			chordNotes.forEach(note => pianoInstrument.triggerAttackRelease(note, duration));
+			break;
 		default:
 			console.log("Please specify a valid instrument");
 	}
-  }
+}
 
 export const playChord = buildPlayChord(Tone);
-
 
 export const getAccidentalSymbol = accidental => {
 	switch (accidental) {

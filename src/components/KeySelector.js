@@ -3,7 +3,6 @@ import styled from '@emotion/styled';
 
 import { keys } from "../staticData/musicTheory";
 import { DataHeader } from "../App.js";
-import { playQuarterNoteFn } from "../helpers/helpers";
 
 const KeySelector = () => {
 	const { currentKey, setCurrentKey, setAccidental } = useContext(DataHeader);
