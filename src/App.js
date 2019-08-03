@@ -4,7 +4,7 @@ import Tone from "tone";
 import ChordExplorer from "./components/ChordExplorer";
 import Header from "./components/Header";
 import Playback from "./components/Playback";
-import { synthQuarterNote, tonifyNote, pianoNotes } from "./helpers/helpers";
+import { playNote, tonifyNote, allInstruments, allNotes } from "./helpers/helpers";
 
 export const DataHeader = React.createContext();
 export const DataChordExplorer = React.createContext();
@@ -32,13 +32,15 @@ function App() {
 			}
 		};
 
-		const toneBuffers = new Tone.Buffers(pianoNotes, toneBuffers => handleSoundsLoaded(toneBuffers));
+		const toneBuffers = new Tone.Buffers(allNotes, toneBuffers => handleSoundsLoaded(toneBuffers));
 	}, [toneBuffer]);
 
 
 	// Play current note when octave or accidental changes
 	useEffect(() => {
-		synthQuarterNote(currentRootNote);
+		if (toneBuffer !== null) {
+			playNote(toneBuffer, instrument, currentRootNote, '4n');
+		}
 	}, [octave, accidental, currentKey, currentRootNote, instrument]);
 
 	return (

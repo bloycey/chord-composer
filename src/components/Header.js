@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import styled from '@emotion/styled';
 
 import AccidentalSelector from "./AccidentalSelector";
-import Helpers from "../helpers/helpers";
 import InstrumentSelector from "./InstrumentSelector";
 import KeySelector from "./KeySelector";
 import OctaveSelector from "./OctaveSelector";
@@ -57,8 +56,7 @@ const Header = props => {
 				<Subtitle value={subtitle} onChange={e => setSubtitle(e.target.value)} />
 			</TitleContainer>
 			<OptionsContainer>
-		<InstrumentSelector />
-				<Helpers/>
+				<InstrumentSelector />
 				<OctaveSelector />
 				<KeySelector />
 				<AccidentalSelector />
