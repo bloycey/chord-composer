@@ -32,7 +32,7 @@ const AccidentalSelector = () => {
 		<AccidentalWrapper>
 			<div>
 				<div>
-					<input type="radio" name="flatsOrSharps" value="natural" checked={accidental === "natural"} onChange={setter(setAccidental, setCurrentKey)} /><AccidentalText>Natural</AccidentalText>
+					<input type="radio" name="flatsOrSharps" value="" checked={accidental === ""} onChange={setter(setAccidental, setCurrentKey)} /><AccidentalText>Natural</AccidentalText>
 				</div>
 				{noteExists(createSharpNote(currentKey), notes) &&
 					<div>

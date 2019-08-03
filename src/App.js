@@ -16,7 +16,7 @@ function App() {
 	const [title, setTitle] = useState("Add a title here");
 	const [subtitle, setSubtitle] = useState("Set a subtitle here");
 	const [currentKey, setCurrentKey] = useState("C");
-	const [accidental, setAccidental] = useState("natural");
+	const [accidental, setAccidental] = useState("");
 	const [octave, setOctave] = useState(3);
 	const [instrument, setInstrument] = useState("synth");
 

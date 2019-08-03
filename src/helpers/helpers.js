@@ -1,5 +1,6 @@
 import Tone from "tone";
 
+//  Piano
 import C1 from "../instruments/piano/C1.ogg";
 import C2 from "../instruments/piano/C2.ogg";
 import C3 from "../instruments/piano/C3.ogg";
@@ -15,15 +16,6 @@ export const allNotes = {
 	...pianoNotes
 }
 
-const buildNote = toneLib => instrument => duration => note => {
-	const sound = new Tone[instrument]().toMaster();
-	sound.triggerAttackRelease(note, duration);
-};
-
-const toneLibrary = buildNote(Tone);
-const synth = toneLibrary("Synth");
-export const synthQuarterNote = synth('4n');
-
 export const piano = toneBuffer => new Tone.Sampler({
 	"C1": toneBuffer.get("C1"),
 	"C2": toneBuffer.get("C2"),
@@ -38,6 +30,8 @@ export const piano = toneBuffer => new Tone.Sampler({
 export const allInstruments = {
 	piano
 }
+
+// Play Chord Function
 
 const buildPlayChord = (Tone, instruments) => (toneBuffer, instrument, chordNotes, duration) => {
 	switch (instrument) {
@@ -56,6 +50,8 @@ const buildPlayChord = (Tone, instruments) => (toneBuffer, instrument, chordNote
 
 export const playChord = buildPlayChord(Tone, allInstruments);
 
+// Play Note Function
+
 const buildPlayNote = (Tone, instruments) => (toneBuffer, instrument, note, duration) => {
 	switch (instrument) {
 		case "synth":
@@ -72,6 +68,8 @@ const buildPlayNote = (Tone, instruments) => (toneBuffer, instrument, note, dura
 
 export const playNote = buildPlayNote(Tone, allInstruments);
 
+// Misc Functions
+
 export const getAccidentalSymbol = accidental => {
 	switch (accidental) {
 		case "b":
@@ -83,4 +81,5 @@ export const getAccidentalSymbol = accidental => {
 	}
 }
 
-export const tonifyNote = note => note.replace("♭", "b").replace("♯", "#").replace("natural", "").replace("flat", "b").replace("sharp", "#");
+export const tonifyNote = note => note.replace("♭", "b").replace("♯", "#");
+export const prettifyNote = note => note.replace("b", "♭").replace("#", "♯");

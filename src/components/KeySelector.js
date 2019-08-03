@@ -9,7 +9,7 @@ const KeySelector = () => {
 	const setter = set => e => {
 		const value = e.target.value;
 		set(value);
-		setAccidental("natural");
+		setAccidental("");
 	}
 	return (
 		<select value={currentKey} onChange={setter(setCurrentKey)}>
