@@ -1,23 +1,25 @@
 import React, { useContext } from 'react';
 import styled from '@emotion/styled';
+import { Select } from 'antd';
 
 import { keys } from "../staticData/musicTheory";
 import { DataHeader } from "../App.js";
 
+const { Option } = Select;
+
 const KeySelector = () => {
 	const { currentKey, setCurrentKey, setAccidental } = useContext(DataHeader);
-	const setter = set => e => {
-		const value = e.target.value;
-		set(value);
+	const setter = value => {
+		setCurrentKey(value);
 		setAccidental("");
 	}
 	return (
-		<select value={currentKey} onChange={setter(setCurrentKey)}>
+		<Select value={currentKey} onChange={setter}>
 			{keys.map(key => (
-				<option value={key} key={key}>{key}</option>
+				<Option value={key} key={key}>{key}</Option>
 			))
 			}
-		</select>
+		</Select>
 	)
 }
 

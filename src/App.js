@@ -6,6 +6,8 @@ import Header from "./components/Header";
 import Playback from "./components/Playback";
 import { playNote, tonifyNote, allInstruments, allNotes } from "./helpers/helpers";
 
+import 'antd/dist/antd.css'
+
 export const DataHeader = React.createContext();
 export const DataChordExplorer = React.createContext();
 
